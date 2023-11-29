@@ -50,7 +50,7 @@ namespace Blazor.QrCode
             {
                 _options = Options;
                 _options.SetChangedMode();
-                if (_text != Text)
+                //if (_text != Text)
                 {
                     _text = Text;
                 }
@@ -66,16 +66,8 @@ namespace Blazor.QrCode
 
         private async Task CreateOrUpdateQrCode(string text, QrCodeOptions? qrCodeOptions = null)
         {
-            await JS.InvokeVoidAsync("console.log", "***Try create JS qr code module instance");
-            //if (qrCodeOptions is not null && qrCodeOptions.IsChanged)
-            //{
-            //    if (_qrCodeModule is not null)
-            //    {
-            //        // force module recreate
-            //        await _qrCodeModule.DisposeAsync();
-            //        _qrCodeModule = null;
-            //    }
-            //}
+            //await JS.InvokeVoidAsync("console.log", "***Try create JS qr code module instance");
+            
             if (ModuleCreator != null && _qrCodeModule is null)
             {
                 _qrCodeModule = await ModuleCreator.CreateAsync();
@@ -98,7 +90,7 @@ namespace Blazor.QrCode
         [Parameter]
         public string Text { get; set; } = InitialText;
 
-        [Inject]
-        private IJSRuntime JS { get; set; }
+        //[Inject]
+        //private IJSRuntime? JS { get; set; }
     }
 }

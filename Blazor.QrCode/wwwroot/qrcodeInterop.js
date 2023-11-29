@@ -6,9 +6,9 @@
 }
 
 export function createQrCode(canvasId, text, width, height, colorDark, colorLight, correctLevel) {
-    for (let i = 0; i < arguments.length; i++) {
-        console.log(arguments[i]);
-    }
+    //for (let i = 0; i < arguments.length; i++) {
+    //    console.log(arguments[i]);
+    //}
     var qrcodeElement = document.getElementById(canvasId);
 
     //clear possible previous context
