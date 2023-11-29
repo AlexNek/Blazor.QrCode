@@ -1,0 +1,143 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+
+
+<PageTitle>QRCode Example</PageTitle>
+
+
+<EditForm Model="@_model" OnValidSubmit="FormValidSubmit" style ="width: 600px;">
+    <h3>QRCode Example</h3>
+    <DataAnnotationsValidator />
+    <ValidationSummary/>
+    <hr />
+    <div class="form-group row">
+        <label for="text" class="col-sm-3 col-form-label">
+            QR Code Text
+        </label>
+        <div class="col-sm-9">
+            <InputText id="text" class="form-control" placeholder="Enter any text/url such as: https://microsoft.com"
+                       @bind-Value="_model.Text" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="size" class="col-sm-3 col-form-label">
+            Size (pixels)
+        </label>
+        <div class="col-sm-9">
+            <InputNumber id="size" class="form-control" placeholder="Enter size"
+                         @bind-Value="_model.Size" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="size" class="col-sm-3 col-form-label">
+            Error Correction Level
+        </label>
+        <div class="col-sm-9">
+            <InputSelect id="size" class="form-control" placeholder="Select Error Correction" @bind-Value="_model.ErrorCorrectionLevel">
+               
+                @foreach (ErrorCorrectionItem display in _errorCorrections)
+                {
+                    <option value="@display.Id">@display.Name</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="darkcolor" class="col-sm-3 col-form-label">
+           Dark Color
+        </label>
+        <div class="col-sm-9">
+            <RadzenColorPicker id="darkcolor" class="form-control" @bind-Value=@_model.ColorDark />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="lightcolor" class="col-sm-3 col-form-label">
+            Light Color
+        </label>
+        <div class="col-sm-9">
+            <RadzenColorPicker id="lightcolor" class="form-control" @bind-Value=@_model.ColorLight />
+        </div>
+    </div>
+   
+    <button>Submit</button>
+</EditForm>
+<br>
+<br>
+
+<QrCode CanvasId="code1" Text="@_text" Options="_options" />
+
+@code
+{
+    public class QrCodeModel
+    {
+        public const string DefaultText = "https://microsoft.com"; 
+
+        [Required]
+        [MaxLength(4296)]
+        public string Text { get; set; } = DefaultText;
+
+        [Range(64, 512, ErrorMessage = "Can only be between 64 .. 512")]
+        public int Size { get; set; } = QrCodeOptions.DefaultSize;
+        
+        [Required]
+        public string ColorLight { get; set; } = "rgb(255, 255, 255)";
+
+        [Required] 
+        public string ColorDark { get; set; } = "rgb(0, 0, 0)";
+
+        public EErrorCorrectionLevel ErrorCorrectionLevel { get; set; } = QrCodeOptions.DefaultErrorCorrectionLevel;
+    }
+
+    public class ErrorCorrectionItem
+    {
+        public EErrorCorrectionLevel Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    readonly List<ErrorCorrectionItem> _errorCorrections = new();
+
+    private readonly QrCodeModel _model = new QrCodeModel();
+
+    private string _text = QrCodeModel.DefaultText;
+
+    private QrCodeOptions? _options;
+
+    private async Task FormValidSubmit()
+    {
+        await Task.CompletedTask;
+        _text = _model.Text;
+        var options = new QrCodeOptions();
+        options.Size = _model.Size;
+        options.ErrorCorrectionLevel = _model.ErrorCorrectionLevel;
+        options.ColorDark = RadzenColorConverter.Parse(_model.ColorDark);
+        options.ColorLight = RadzenColorConverter.Parse(_model.ColorLight);
+        _options = options;
+    }
+
+    /// <summary>
+    /// Method invoked when the component is ready to start, having received its
+    /// initial parameters from its parent in the render tree.
+    /// Override this method if you will perform an asynchronous operation and
+    /// want the component to refresh when that operation is completed.
+    /// </summary>
+    /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing any asynchronous operation.</returns>
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        //https://learn.microsoft.com/en-us/dotnet/api/system.enum.getvalues?view=net-8.0
+        //The elements of the array are sorted by the binary values of the enumeration constants (that is, by their unsigned magnitude)
+        //var errorCorrectionEnums = Enum.GetValues<EErrorCorrectionLevel>();
+
+        var errorCorrectionEnums = new[] { EErrorCorrectionLevel.Low, EErrorCorrectionLevel.Medium, EErrorCorrectionLevel.Quartile, EErrorCorrectionLevel.High };
+
+        foreach (var correctionLevel in errorCorrectionEnums)
+        {
+            _errorCorrections.Add(new ErrorCorrectionItem() { Id = correctionLevel, Name = Enum.GetName(correctionLevel) });
+        }
+        _model.ColorDark = RadzenColorConverter.ToString(QrCodeOptions.DefaultColorDark);
+        _model.ColorLight = RadzenColorConverter.ToString(QrCodeOptions.DefaultColorLight);
+    }
+    
+    // https://blazor.radzen.com/colorpicker
+}

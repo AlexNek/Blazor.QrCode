@@ -1,0 +1,16 @@
+﻿@using Microsoft.JSInterop
+
+<div id=@CanvasId ></div>
+
+@code
+{
+    /// <summary>
+    /// Gets or sets the canvas identifier.
+    /// </summary>
+    /// <value>The canvas identifier.</value>
+    [Parameter]
+    public string CanvasId { get; set; } = "qrcode";
+
+    [Parameter]
+    public QrCodeOptions? Options { get; set; }
+}
