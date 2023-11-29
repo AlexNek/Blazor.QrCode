@@ -33,7 +33,7 @@ namespace Blazor.QrCode
                 if (_qrCodeInstance is not null)
                 {
                     // force instance refresh
-                   await _qrCodeInstance.ClearAsync();
+                    await _qrCodeInstance.ClearAsync();
                     await _qrCodeInstance.DisposeAsync();
                     _qrCodeInstance = null;
                 }
