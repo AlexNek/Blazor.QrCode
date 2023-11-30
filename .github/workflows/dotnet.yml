@@ -25,9 +25,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
+      run: dotnet restore 
     - name: Build
-      run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./build
+      run: dotnet build  --no-restore 
       # env:
       #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     # - name: Pack  
@@ -49,7 +49,12 @@ jobs:
     #   with:
     #     name: Blazor.QrCode
     #     path: ./Blazor.QrCode/bin/Debug/
-
+    - name: Restore dependencies
+      run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
+    - name: Build
+      run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./build
+    # env:
+    #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     - name: Create release
       id: create_release
       uses: actions/create-release@v1
