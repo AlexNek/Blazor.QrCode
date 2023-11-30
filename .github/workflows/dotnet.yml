@@ -2,13 +2,16 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 # force build
 
-name: .NET
+name: Deploy Blazor.QrCode
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # --Manual run--
+  workflow_dispatch:
+  # --Auto run--
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
 
 jobs:
   build:
@@ -22,10 +25,38 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./build
+      # env:
+      #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+    - name: Pack  
+      run: dotnet pack ./Blazor.QrCode/Blazor.QrCode.csproj --configuration Release --output ./build
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Publish
-      run: dotnet publish -c Release
+    # - name: Publish nuget
+    #   run: dotnet nuget push ./build/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
+    # - name: Publish
+    #   run: dotnet publish ./Blazor.QrCode/Blazor.QrCode.csproj -c Release --output ./publish
+
+    # - name: Publish to GitHub Packages
+    #   run: dotnet nuget add source https://nuget.pkg.github.com/OWNER/index.json --name github --username OWNER --password ${{ secrets.GITHUB_TOKEN }}
+    #   run: dotnet nuget push ./build/*.nupkg --source github --api-key ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Publish to GitHub
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: Blazor.QrCode
+    #     path: ./Blazor.QrCode/bin/Debug/
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: true
