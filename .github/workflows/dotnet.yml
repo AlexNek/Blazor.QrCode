@@ -59,17 +59,19 @@ jobs:
       run: echo ${{ github.workspace }}
     - name: debug output 2
       run: echo .$GITHUB_RUN_NUMBER
-    # - name: Get version
-    #   id: get_version
-    #   run: |
-    #     $dllPath = ${{ github.workspace }}/Blazor.QrCode/publish/Blazor.QrCode.dll
-    #     #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
-    #     #$version = $versionInfo.ProductVersion
-    #     #echo "::set-output name=version::$version"
-    #     version=$(strings $dllPath | grep AssemblyVersion | cut -d' ' -f2)
-    #     echo "::set-output name=version::$version"
+    - name: Get version
+      id: get_version
+      run: |
+        $dllPath = ${{ github.workspace }}/Blazor.QrCode/publish/Blazor.QrCode.dll
+        sudo apt-get install mono-runtime
+        #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
+        #$version = $versionInfo.ProductVersion
+        ###version=$(strings $dllPath | grep AssemblyVersion | cut -d' ' -f2)
+        version=$(monodis --assembly $dllPath | grep Version | cut -d' ' -f2)
+        echo "::set-output name=version::$version"
 
     - name: Display release name
+    # empty
       run: echo Release v${{ steps.get_version.outputs.version }}
     - name: Create release
       id: create_release
