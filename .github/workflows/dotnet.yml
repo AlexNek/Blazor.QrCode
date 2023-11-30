@@ -68,7 +68,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT }} # need to create by user
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        files: "*.nupkg"
+        files: ${{ github.workspace }}/publish/"*.nupkg"
         tag_name: ${{ github.ref_name }}
         #release_name: Release ${{ github.ref_name }}
         name: Release ${{ github.ref_name }}
