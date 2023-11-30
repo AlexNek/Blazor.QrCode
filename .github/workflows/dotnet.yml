@@ -63,9 +63,12 @@ jobs:
       id: get_version
       run: |
         $dllPath = ${{ github.workspace }}/Blazor.QrCode/
-        $versionInfo = Get-FileVersionInfo -FilePath $dllPath
-        $version = $versionInfo.ProductVersion
+        #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
+        #$version = $versionInfo.ProductVersion
+        #echo "::set-output name=version::$version"
+        version=$(strings $dllPath | grep AssemblyVersion | cut -d' ' -f2)
         echo "::set-output name=version::$version"
+
     - name: Display release name
       run: echo Release v${{ steps.get_version.outputs.version }}
     - name: Create release
