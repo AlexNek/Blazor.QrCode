@@ -61,7 +61,8 @@ jobs:
       env:
         #you can’t use ${{ secrets.GITHUB_TOKEN }} as it isn’t allowed to publish releases.
         #GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+        #GITHUB_TOKEN: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         # tag_name: ${{ github.ref }}
         # release_name: Release ${{ github.ref }}
