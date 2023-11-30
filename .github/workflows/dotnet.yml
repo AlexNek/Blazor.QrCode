@@ -56,9 +56,9 @@ jobs:
     # env:
     #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     - name: debug output 1
-      run: echo ${{ github.workspace }}
-    - name: debug output 2
-      run: echo .$GITHUB_RUN_NUMBER
+      run: |
+       echo ${{ github.workspace }}
+       echo .$GITHUB_RUN_NUMBER
     - name: Get version
       id: get_version
       run: |
