@@ -57,11 +57,12 @@ jobs:
     #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     - name: Create release
       id: create_release
-      uses: actions/create-release@v1
+      #uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v1
       env:
-        #you can’t use ${{ secrets.GITHUB_TOKEN }} as it isn’t allowed to publish releases. - wrong info?
+        #you can’t use ${{ secrets.GITHUB_TOKEN }} as it isn’t allowed to publish releases. 
         #GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.PAT }} # need to create by user
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
