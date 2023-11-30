@@ -62,11 +62,12 @@ jobs:
     - name: Get version
       id: get_version
       run: |
-        dotnet restore
-        VERSION_NUMBER=$(dotnet run --project ./Blazor.QrCode/Blazor.QrCode.csproj)
-        echo "::set-output name=version_number::$VERSION_NUMBER"
+        $dllPath = ${{ github.workspace }}/Blazor.QrCode"
+        $versionInfo = Get-FileVersionInfo -FilePath $dllPath
+        $version = $versionInfo.ProductVersion
+        echo "::set-output name=version::$version"
     - name: Display release name
-      run: echo Release v${{ steps.get_version.outputs.version_number }}
+      run: echo Release v${{ steps.get_version.outputs.version }}
     - name: Create release
       id: create_release
       #uses: actions/create-release@v1
