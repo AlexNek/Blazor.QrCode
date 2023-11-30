@@ -30,8 +30,8 @@ jobs:
       run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./build
       # env:
       #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-    - name: Pack  
-      run: dotnet pack ./Blazor.QrCode/Blazor.QrCode.csproj --configuration Release --output ./build
+    # - name: Pack  
+    #   run: dotnet pack ./Blazor.QrCode/Blazor.QrCode.csproj --configuration Release --output ./build
     - name: Test
       run: dotnet test --no-build --verbosity normal
     # - name: Publish nuget
