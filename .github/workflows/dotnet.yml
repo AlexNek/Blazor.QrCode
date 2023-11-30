@@ -55,8 +55,18 @@ jobs:
       run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./publish
     # env:
     #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-    - name: debug output
+    - name: debug output 1
       run: echo ${{ github.workspace }}
+    - name: debug output 2
+      run: echo .$GITHUB_RUN_NUMBER
+    - name: Get version
+      id: get_version
+      run: |
+        dotnet restore
+        VERSION_NUMBER=$(dotnet run --project ./Blazor.QrCode/Blazor.QrCode.csproj)
+        echo "::set-output name=version_number::$VERSION_NUMBER"
+    - name: Display release name
+      run: echo Release v${{ steps.get_version.outputs.version_number }}
     - name: Create release
       id: create_release
       #uses: actions/create-release@v1
