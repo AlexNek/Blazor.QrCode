@@ -59,10 +59,10 @@ jobs:
       id: create_release
       uses: actions/create-release@v1
       env:
-        #you can’t use ${{ secrets.GITHUB_TOKEN }} as it isn’t allowed to publish releases. See https://docs.github.com/en/rest/reference/repos#publish-a-release
+        #you can’t use ${{ secrets.GITHUB_TOKEN }} as it isn’t allowed to publish releases. - wrong info?
         #GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        #GITHUB_TOKEN: ${{ secrets.PAT }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+        #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
