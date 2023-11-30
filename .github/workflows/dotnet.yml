@@ -62,7 +62,7 @@ jobs:
     - name: Get version
       id: get_version
       run: |
-        $dllPath = ${{ github.workspace }}/Blazor.QrCode/
+        $dllPath = ${{ github.workspace }}/Blazor.QrCode/publish/Blazor.QrCode.dll
         #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
         #$version = $versionInfo.ProductVersion
         #echo "::set-output name=version::$version"
