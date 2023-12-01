@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.QrCode", "Blazor.QrC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.QrCode.Tests", "Blazor.QrCode.Tests\Blazor.QrCode.Tests.csproj", "{16062C31-BBE2-4977-B4DA-941F996ACE59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorQrCode.AppWasm.Test", "BlazorQrCode.AppWasm.Test\BlazorQrCode.AppWasm.Test.csproj", "{6D11F1C1-BD43-4ED6-963A-A7BF8A6FB84C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorQrCode.AppWasm.Test", "BlazorQrCode.AppWasm.Test\BlazorQrCode.AppWasm.Test.csproj", "{6D11F1C1-BD43-4ED6-963A-A7BF8A6FB84C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DB48C2DC-3FFE-4118-9F19-A5FA9632D339}"
 	ProjectSection(SolutionItems) = preProject
-		CHANGELOG.md = CHANGELOG.md
+		Blazor.QrCode\CHANGELOG.md = Blazor.QrCode\CHANGELOG.md
 		README.md = README.md
 	EndProjectSection
 EndProject
