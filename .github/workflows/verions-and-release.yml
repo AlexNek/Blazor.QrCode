@@ -2,8 +2,8 @@
 name: Deploy Blazor.QrCode with auto version support
 
 on:
-  push:
-    branches: [ "main" ]
+ # --Manual run--
+ workflow_dispatch:
 
 jobs:
   build:
@@ -23,9 +23,9 @@ jobs:
       run: dotnet restore 
     - name: Build
       run: dotnet build  --no-restore 
- - name: Test
+    - name: Test
       run: dotnet test --no-build --verbosity normal
-- name: Restore dependencies
+    - name: Restore dependencies
       run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
     - name: Build nuget
       run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./publish
