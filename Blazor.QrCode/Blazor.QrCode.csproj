@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
+    <Version>$(Version)</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -14,7 +14,13 @@
     <RepositoryUrl>https://github.com/AlexNek/Blazor.QrCode</RepositoryUrl>
     <PackageTags>qrcode-generator; blazor-webassembly; net80 </PackageTags>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <ApplicationIcon>Blazor.qrcode.ico</ApplicationIcon>
+    <PackageIcon>Blazor.qrcode-128.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Blazor.qrcode.ico" />
+  </ItemGroup>
 
 
   <ItemGroup>
@@ -47,6 +53,13 @@
     <Content Update="wwwroot\qrcodeInterop.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Blazor.qrcode-128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
