@@ -49,4 +49,8 @@
     </Content>
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="versionize" />
+  </Target>
+
 </Project>
