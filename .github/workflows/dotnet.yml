@@ -89,8 +89,9 @@ jobs:
     #     echo "::set-output name=version::$version"
 
     - name: Display release name
-    # empty
-      run: echo Release v${{ steps.get_version.outputs.version }}
+      # empty
+      ##run: echo Release v${{ steps.get_version.outputs.version }}
+      run: echo $VERSION
     - name: Create release
       id: create_release
       #uses: actions/create-release@v1
@@ -103,9 +104,9 @@ jobs:
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: ${{ github.workspace }}/publish/*.nupkg
-        tag_name: v${{ steps.get_version.outputs.version }}
+        tag_name: v$VERSION
         #release_name: Release ${{ github.ref_name }}
-        name: Release v${{ steps.get_version.outputs.version }}
+        name: Release v$VERSION
         # tag_name: ${{ needs.build-dev.outputs.version }}
         # release_name: Release ${{ needs.build-dev.outputs.version }}        
         draft: false
