@@ -1,0 +1,23 @@
+{
+  "changelogAll": true,
+  "changelog": {
+    "header": "Blazor.QrCode Changelog",
+    "sections": [
+      {
+        "type": "feat",
+        "section": "? Features",
+        "hidden": false
+      },
+      {
+        "type": "fix",
+        "section": "?? Bug Fixes",
+        "hidden": true
+      },
+      {
+        "type": "perf",
+        "section": "?? Performance",
+        "hidden": false
+      }
+    ]
+  }
+}
