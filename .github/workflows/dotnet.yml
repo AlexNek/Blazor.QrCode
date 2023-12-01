@@ -56,8 +56,8 @@ jobs:
       run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
     - name: Build nuget
       run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./publish
-    # env:
-    #   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     - name: debug output 1
       run: |
        echo ${{ github.workspace }}
