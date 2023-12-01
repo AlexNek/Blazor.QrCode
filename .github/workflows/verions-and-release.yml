@@ -42,13 +42,13 @@ jobs:
     - name: No release required
       if: steps.versionize.outcome != 'success'
       run: echo "Skipping Release. No release required."
-    - name: Push changes to GitHub
-      if: steps.versionize.outcome == 'success'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.PAT }}
-        branch: ${{ github.ref }}
-        tags: true
+    # - name: Push changes to GitHub
+    #   if: steps.versionize.outcome == 'success'
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     github_token: ${{ secrets.PAT }}
+    #     branch: ${{ github.ref }}
+    #     tags: true
     - name: "Create release"
       if: steps.versionize.outcome == 'success'
       uses: "actions/github-script@v5"
