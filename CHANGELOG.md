@@ -1,4 +1,7 @@
 Blazor.QrCode Changelog
+<a name="1.0.2"></a>
+## [1.0.2](https://www.github.com/AlexNek/Blazor.QrCode/releases/tag/v1.0.2) (2023-12-01)
+
 <a name="1.0.0"></a>
 ## [1.0.0](https://www.github.com/AlexNek/Blazor.QrCode/releases/tag/v1.0.0) (2023-12-01)
 
