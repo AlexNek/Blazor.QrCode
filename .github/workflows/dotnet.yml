@@ -91,7 +91,7 @@ jobs:
     - name: Display release name
       # empty
       ##run: echo Release v${{ steps.get_version.outputs.version }}
-      run: echo ${{env.VERSION}}
+      run: echo ${{ steps.version-step.outputs.version }}
     - name: Create release
       id: create_release
       #uses: actions/create-release@v1
@@ -104,9 +104,9 @@ jobs:
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: ${{ github.workspace }}/publish/*.nupkg
-        tag_name: v${{env.VERSION}}
+        tag_name: v${{ steps.version-step.outputs.version }}
         #release_name: Release ${{ github.ref_name }}
-        name: Release v${{env.VERSION}}
+        name: Release v${{ steps.version-step.outputs.version }}
         # tag_name: ${{ needs.build-dev.outputs.version }}
         # release_name: Release ${{ needs.build-dev.outputs.version }}        
         draft: false
