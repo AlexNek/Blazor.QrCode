@@ -59,15 +59,16 @@ jobs:
       run: |
        echo ${{ github.workspace }}
        echo .$GITHUB_RUN_NUMBER
-    - name: Get version
-        # id must be specified to retrieve the output of the step
+    - name: Get version from text file
+      # id must be specified to retrieve the output of the step
       id: version-step
       uses: michmich112/extract-version@main
       with:
-          # specify here the path to your version file (e.g. package.json, pom.xml...)
-        version-file: VERSION
+        # specify here the path to your version file (e.g. package.json, pom.xml...)
+        ##version-file: VERSION
+        vrsion-file: ${{ github.workspace }}/Blazor.QrCode/publish/Blazor.QrCode.dll
         schema: major.minor.build
-    - name: test
+    - name: test show version
       run: |
           echo "version -> $VERSION"
       env:
