@@ -1,9 +1,9 @@
 # Blazor.QrCode
-> **Note** Not finished yet
+> **Note** Not finished yet.  
 TODO:
--[] use version number into github yml
--[] publish nuget package from pipeline
--[] update documentation
+ - [ ] use version number into github yml
+ - [ ] publish nuget package from pipeline
+ - [ ] update documentation
 
 ## Introduction
 
