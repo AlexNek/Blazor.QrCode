@@ -69,7 +69,8 @@ jobs:
       with:
         # specify here the path to your version file (e.g. package.json, pom.xml...)
         ##version-file: VERSION
-        version-file: ${{ github.workspace }}/publish/Blazor.QrCode.dll
+        ##version-file: ${{ github.workspace }}/publish/Blazor.QrCode.dll
+        version-file: ./Blazor.QrCode/Blazor.QrCode.csproj
         schema: major.minor.build
     - name: test show version
       run: |
