@@ -91,7 +91,7 @@ jobs:
     - name: Display release name
       # empty
       ##run: echo Release v${{ steps.get_version.outputs.version }}
-      run: echo "$VERSION"
+      run: echo ${{VERSION}}
     - name: Create release
       id: create_release
       #uses: actions/create-release@v1
