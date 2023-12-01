@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.0.2"></a>
+## [1.0.2](https://www.github.com/AlexNek/Blazor.QrCode/releases/tag/v1.0.2) (2023-12-01)
+
+### Other
+
+* move change log ([bc59b0b](https://www.github.com/AlexNek/Blazor.QrCode/commit/bc59b0bf77cdac0e5dc8e66e330a9b2192a1f0b2))
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://www.github.com/AlexNek/Blazor.QrCode/releases/tag/v1.0.1) (2023-12-01)
 
