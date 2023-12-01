@@ -77,16 +77,16 @@ jobs:
           echo "version -> $VERSION"
       env:
           VERSION: ${{ steps.version-step.outputs.version }}
-    - name: Get version 2
-      id: get_version
-      run: |
-        $dllPath = ${{ github.workspace }}/publish/Blazor.QrCode.dll
-        sudo apt-get install mono-runtime
-        #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
-        #$version = $versionInfo.ProductVersion
-        ###version=$(strings $dllPath | grep AssemblyVersion | cut -d' ' -f2)
-        version=$(monodis --assembly $dllPath | grep Version | cut -d' ' -f2)
-        echo "::set-output name=version::$version"
+    # - name: Get version 2
+    #   id: get_version
+    #   run: |
+    #     $dllPath = ${{ github.workspace }}/publish/Blazor.QrCode.dll
+    #     sudo apt-get install mono-runtime
+    #     #$versionInfo = Get-FileVersionInfo -FilePath $dllPath
+    #     #$version = $versionInfo.ProductVersion
+    #     ###version=$(strings $dllPath | grep AssemblyVersion | cut -d' ' -f2)
+    #     version=$(monodis --assembly $dllPath | grep Version | cut -d' ' -f2)
+    #     echo "::set-output name=version::$version"
 
     - name: Display release name
     # empty
@@ -103,10 +103,10 @@ jobs:
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: ${{ github.workspace }}/publish/*.nupkg
-        tag_name: ${{ github.ref_name }}
+        tag_name: v${{ steps.get_version.outputs.version }}
         #release_name: Release ${{ github.ref_name }}
-        name: Release ${{ github.ref_name }}
+        name: Release v${{ steps.get_version.outputs.version }}
         # tag_name: ${{ needs.build-dev.outputs.version }}
         # release_name: Release ${{ needs.build-dev.outputs.version }}        
         draft: false
-        prerelease: true
+        prerelease: false
