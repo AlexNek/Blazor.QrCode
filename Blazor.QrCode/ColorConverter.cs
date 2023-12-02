@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Text;
 
-namespace Blazor.QrCode
+namespace Blazor.QrCodeGen
 {
     public static class ColorConverter
     {

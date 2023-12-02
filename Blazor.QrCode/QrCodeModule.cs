@@ -1,19 +1,18 @@
 ﻿using Microsoft.JSInterop;
-using System.Drawing;
 
-namespace Blazor.QrCode
+namespace Blazor.QrCodeGen
 {
     /// <summary>
     /// Class QrCodeModule.
-    /// Implements the <see cref="Blazor.QrCode.JsInteropObject" />
+    /// Implements the <see cref="JsInteropObject" />
     /// </summary>
-    /// <seealso cref="Blazor.QrCode.JsInteropObject" />
+    /// <seealso cref="JsInteropObject" />
     public class QrCodeModule : JsInteropObject
     {
         private QrCodeInstance? _qrCodeInstance;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Blazor.QrCode.QrCodeModule"/> class.
+        /// Initializes a new instance of the <see cref="QrCodeModule"/> class.
         /// </summary>
         /// <param name="jsInstance">The j s instance.</param>
         /// <param name="moduleRef">The qr code wrapper.</param>

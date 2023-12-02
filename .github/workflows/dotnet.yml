@@ -2,7 +2,7 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 # force build
 
-name: Deploy Blazor.QrCode
+name: Deploy Blazor.QrCodeGen
 
 on:
   # --Manual run--
@@ -53,15 +53,15 @@ jobs:
     #     name: Blazor.QrCode
     #     path: ./Blazor.QrCode/bin/Debug/
     - name: Restore dependencies
-      run: dotnet restore ./Blazor.QrCode/Blazor.QrCode.csproj
+      run: dotnet restore ./Blazor.QrCode/Blazor.QrCodeGen.csproj
     - name: Build nuget
-      run: dotnet build ./Blazor.QrCode/Blazor.QrCode.csproj --no-restore --configuration Release --output ./publish
+      run: dotnet build ./Blazor.QrCode/Blazor.QrCodeGen.csproj --no-restore --configuration Release --output ./publish
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
     # - name: Pack package
-    #   run: dotnet pack ./Blazor.QrCode/Blazor.QrCode.csproj --configuration Release --output ./publish
-    # - name: Push package
-    #   run: dotnet nuget push ./publish/*.nupkg --no-symbols --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+    #   run: dotnet pack ./Blazor.QrCode/Blazor.QrCodeGen.csproj --configuration Release --output ./publish
+    - name: Push package
+      run: dotnet nuget push ./publish/*.nupkg --no-symbols --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     - name: debug output 1
       run: |
        echo ${{ github.workspace }}
@@ -74,7 +74,7 @@ jobs:
         # specify here the path to your version file (e.g. package.json, pom.xml...)
         ##version-file: VERSION
         ##version-file: ${{ github.workspace }}/publish/Blazor.QrCode.dll
-        version-file: ./Blazor.QrCode/Blazor.QrCode.csproj
+        version-file: ./Blazor.QrCode/Blazor.QrCodeGen.csproj
         schema: major.minor.build
     - name: test show version
       run: |

@@ -25,7 +25,7 @@ namespace Blazor.QrCode.Tests
 
             // Act
 
-            var result = Blazor.QrCode.ColorConverter.Convert(color);
+            var result = QrCodeGen.ColorConverter.Convert(color);
 
             // Assert
             result.Should().Be(expected);

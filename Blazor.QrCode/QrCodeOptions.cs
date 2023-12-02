@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Blazor.QrCode;
+namespace Blazor.QrCodeGen;
 
 public class QrCodeOptions : IEquatable<QrCodeOptions>
 {

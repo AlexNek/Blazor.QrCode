@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Blazor.QrCode\Blazor.QrCode.csproj" />
+    <ProjectReference Include="..\Blazor.QrCode\Blazor.QrCodeGen.csproj" />
   </ItemGroup>
 
 </Project>

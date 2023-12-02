@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace Blazor.QrCode;
+namespace Blazor.QrCodeGen;
 
 public class ModuleCreator
 {

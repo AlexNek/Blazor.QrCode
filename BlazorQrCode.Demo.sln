@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorQrCode.AppWasm", "BlazorQrCode.App\BlazorQrCode.AppWasm.csproj", "{09983E2D-EDDE-4D65-B292-E34FA95B565B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.QrCode", "Blazor.QrCode\Blazor.QrCode.csproj", "{01C12D64-E7DF-41EF-B089-0D28373F4B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.QrCodeGen", "Blazor.QrCode\Blazor.QrCodeGen.csproj", "{01C12D64-E7DF-41EF-B089-0D28373F4B44}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.QrCode.Tests", "Blazor.QrCode.Tests\Blazor.QrCode.Tests.csproj", "{16062C31-BBE2-4977-B4DA-941F996ACE59}"
 EndProject

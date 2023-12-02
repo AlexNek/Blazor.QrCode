@@ -1,4 +1,4 @@
-﻿namespace Blazor.QrCode
+﻿namespace Blazor.QrCodeGen
 {
     public enum EErrorCorrectionLevel
     {

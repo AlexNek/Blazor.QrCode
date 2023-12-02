@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 
-namespace Blazor.QrCode
+namespace Blazor.QrCodeGen
 {
     public partial class QrCode
     {

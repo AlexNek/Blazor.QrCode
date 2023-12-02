@@ -1,4 +1,4 @@
-using Blazor.QrCode;
+using Blazor.QrCodeGen;
 
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
