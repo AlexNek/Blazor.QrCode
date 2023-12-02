@@ -61,7 +61,7 @@ jobs:
     # - name: Pack package
     #   run: dotnet pack ./Blazor.QrCode/Blazor.QrCode.csproj --configuration Release --output ./publish
     - name: Push package
-      run: dotnet nuget push ./publish/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./publish/*.nupkg --no-symbols --skip-duplicate --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
     - name: debug output 1
       run: |
        echo ${{ github.workspace }}
