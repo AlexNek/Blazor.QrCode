@@ -7,8 +7,6 @@ All notable changes to this project will be documented in this file. See [versio
 
 ### Other
 
-* correct change log ([e11d3f2](https://www.github.com/AlexNek/Blazor.QrCode/commit/e11d3f25f20dbcd5030eb0042bbcd4c5d5a97c79))
-* disable push package ([7205bf7](https://www.github.com/AlexNek/Blazor.QrCode/commit/7205bf750d0e437c03521638d0edc17a5f97aa46))
 * rename package as the same name exists ([190d0ed](https://www.github.com/AlexNek/Blazor.QrCode/commit/190d0edd08868ea02898f3b60e4b527e3a1bf6b3))
 
 <a name="1.1.0"></a>
