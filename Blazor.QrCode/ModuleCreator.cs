@@ -13,7 +13,7 @@ public class ModuleCreator
     {
         IJSObjectReference moduleRef = await JsInstance.InvokeAsync<IJSObjectReference>(
                                            "import",
-                                           "./_content/Blazor.QrCode/qrcodeInterop.js").ConfigureAwait(false);
+                                           "./_content/Blazor.QrCodeGen/qrcodeInterop.js").ConfigureAwait(false);
 
         return new QrCodeModule(JsInstance, moduleRef);
     }
