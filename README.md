@@ -36,8 +36,8 @@ dotnet add package Blazor.QrCodeGen
 
  You need to add 2 lines into index.html
 ```html
-    <script src="./_content/Blazor.QrCode/qrcode.min.js"></script>
-    <script type="module" src="./_content/Blazor.QrCode/qrcodeInterop.js"></script>
+    <script src="./_content/Blazor.QrCodeGen/qrcode.min.js"></script>
+    <script type="module" src="./_content/Blazor.QrCodeGen/qrcodeInterop.js"></script>
 ```
 
 ### Usage
