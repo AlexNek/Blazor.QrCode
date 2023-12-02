@@ -12,5 +12,8 @@
     public string CanvasId { get; set; } = "qrcode";
 
     [Parameter]
+    public int? Size { get; set; } = null;
+
+    [Parameter]
     public QrCodeOptions? Options { get; set; }
 }

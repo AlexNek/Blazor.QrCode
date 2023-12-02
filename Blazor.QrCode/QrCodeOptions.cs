@@ -4,6 +4,14 @@ namespace Blazor.QrCode;
 
 public class QrCodeOptions : IEquatable<QrCodeOptions>
 {
+    private Color _colorDark = DefaultColorDark;
+
+    private Color _colorLight = DefaultColorLight;
+
+    private EErrorCorrectionLevel _errorCorrectionLevel = DefaultErrorCorrectionLevel;
+
+    private int _size = DefaultSize;
+
     /// <summary>Indicates whether the current object is equal to another object of the same type.</summary>
     /// <param name="other">An object to compare with this object.</param>
     /// <returns>
@@ -55,14 +63,42 @@ public class QrCodeOptions : IEquatable<QrCodeOptions>
         return HashCode.Combine(Size, ColorDark, ColorLight, (int)ErrorCorrectionLevel);
     }
 
-    public void SetChangedMode(bool changed = true)
+    //public void SetChangedMode(bool changed = true)
+    //{
+    //    IsModified = changed;
+    //}
+
+    public Color ColorDark
     {
-        IsChanged = changed;
+        get
+        {
+            return _colorDark;
+        }
+        set
+        {
+            if (_colorDark != value)
+            {
+                _colorDark = value;
+                IsModified = true;
+            }
+        }
     }
 
-    public Color ColorDark { get; set; } = DefaultColorDark;
-
-    public Color ColorLight { get; set; } = DefaultColorLight;
+    public Color ColorLight
+    {
+        get
+        {
+            return _colorLight;
+        }
+        set
+        {
+            if (_colorLight != value)
+            {
+                _colorLight = value;
+                IsModified = true;
+            }
+        }
+    }
 
     public static Color DefaultColorDark { get; } = Color.Black;
 
@@ -72,9 +108,37 @@ public class QrCodeOptions : IEquatable<QrCodeOptions>
 
     public static int DefaultSize { get; } = 256;
 
-    public EErrorCorrectionLevel ErrorCorrectionLevel { get; set; } = DefaultErrorCorrectionLevel;
+    public EErrorCorrectionLevel ErrorCorrectionLevel
+    {
+        get
+        {
+            return _errorCorrectionLevel;
+        }
+        set
+        {
+            if (_errorCorrectionLevel != value)
+            {
+                _errorCorrectionLevel = value;
+                IsModified = true;
+            }
+        }
+    }
 
-    public int Size { get; set; } = DefaultSize;
+    public int Size
+    {
+        get
+        {
+            return _size;
+        }
+        set
+        {
+            if (_size != value)
+            {
+                _size = value;
+                IsModified = true;
+            }
+        }
+    }
 
-    internal bool IsChanged { get; private set; }
+    internal bool IsModified { get; private set; }
 }

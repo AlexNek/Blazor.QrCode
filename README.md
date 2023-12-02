@@ -1,9 +1,4 @@
 # Blazor.QrCode
-> **Note** Not finished yet.  
-TODO:
- - [x] use version number into github yml
- - [ ] publish nuget package from pipeline
- - [x] update documentation
 
 ## Introduction
 
@@ -37,7 +32,7 @@ dotnet add package Blazor.QrCode
 
  Using MS VS Manage NuGet Packages search for `Blazor.QrCode`
 
- - Add dependency
+ - Add dependencies
 
  You need to add 2 lines into index.html
 ```html
@@ -52,13 +47,30 @@ Simple use with default settings:
 <QrCode CanvasId="AnyId" Text="Any text"/>
 ```
 
-Usage with customized settings:
+Using with text and size in pixel:
+```csharp
+<QrCode CanvasId="AnyId" Text="Any text" Size="64"/>
+```
+
+Using with customized settings:
 ```csharp
 <QrCode CanvasId="AnyId" Text="Any text" Options="_options" />
 @code{
- private QrCodeOptions _options = new QRCodeOptons(){Size = 128};
+ private QrCodeOptions _options = new QRCodeOptons(){Color = Color.Blue};
 }
 ```
+
+> **Note:** If you set both Size for Attribute and Options, then Attribute takes precedence.
+
+
+## Options
+
+| Name | Default |
+|--------|--------|
+| Size  | 256    |
+| ColorDark | Black  |
+| ColorLight | White |
+| ErrorCorrectionLevel | High|
 
 ## Features
 
@@ -69,5 +81,5 @@ Blazor component for QR code generation. You can change:
  - Error correction level
 
 ## Releases
-
+1.1 Added property Size
 1.0 Initial .Net8.0 release

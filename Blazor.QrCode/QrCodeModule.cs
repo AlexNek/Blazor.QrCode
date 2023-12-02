@@ -28,7 +28,7 @@ namespace Blazor.QrCode
         public async Task ShowAsync(string canvasId, string text, QrCodeOptions? qrCodeOptions)
         {
             //await ModuleRef.InvokeVoidAsync("showParameters", canvasId, text);
-            if (qrCodeOptions != null && qrCodeOptions.IsChanged)
+            if (qrCodeOptions != null && qrCodeOptions.IsModified)
             {
                 if (_qrCodeInstance is not null)
                 {

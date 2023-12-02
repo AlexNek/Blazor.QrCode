@@ -1,4 +1,4 @@
-﻿# https://medium.com/@fran6_ca/how-to-version-and-release-net-application-e7b5811dfe4b
+# https://medium.com/@fran6_ca/how-to-version-and-release-net-application-e7b5811dfe4b
 name: Deploy Blazor.QrCode with auto version support
 
 on:

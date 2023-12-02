@@ -10,31 +10,10 @@ namespace Blazor.QrCode
         private QrCodeModule? _qrCodeModule = null;
 
         private string _text = InitialText;
+        private int? _size = null;
 
         private QrCodeOptions? _options = null;
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            await base.OnAfterRenderAsync(firstRender).ConfigureAwait(false);
-            if (firstRender)
-            {
-                try
-                {
-                    //if (_qrCodeModule is not null)
-                    //{
-                    //    await _qrCodeModule.DisposeAsync();
-                    //}
-                    //await CreateOrUpdateQrCode(_text);
-                }
-                catch (Exception ex)
-                {
-                    if (ModuleCreator != null)
-                    {
-                        await ModuleCreator.JsInstance.InvokeVoidAsync("console.log", $"***Exception:{ex}").ConfigureAwait(false);
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
@@ -49,18 +28,55 @@ namespace Blazor.QrCode
             if (Options is not null && !Options.Equals(_options))
             {
                 _options = Options;
-                _options.SetChangedMode();
-                //if (_text != Text)
+                //_options.SetChangedMode();
+                _text = Text;
+                _size = Size;
+                if (_size.HasValue)
                 {
-                    _text = Text;
+                    _options.Size = _size.Value;
                 }
                 await UpdateTextAsync(_text, _options);
+            }
+
+            // check if size is changed
+            if (_size != Size && _options is null)
+            {
+                _size = Size;
+                if (_size.HasValue)
+                {
+                    // if size is changed then use any latest text
+                    _text = Text;
+
+                    // default size must set modify flag too
+                    var qrCodeOptions = new QrCodeOptions { Size = 0 };
+                    qrCodeOptions.Size = _size.Value;
+                    await UpdateTextAsync(_text, qrCodeOptions);
+                }
+                else
+                {
+                    // if text is changed, change it too
+                    if (_text != Text)
+                    {
+                        _text = Text;
+                        await UpdateTextAsync(_text);
+                    }
+                }
             }
 
             if (_text != Text && _options is null)
             {
                 _text = Text;
-                await UpdateTextAsync(_text);
+                if (_size.HasValue)
+                {
+                    // default size must set modify flag too
+                    var qrCodeOptions = new QrCodeOptions { Size = 0 };
+                    qrCodeOptions.Size = _size.Value;
+                    await UpdateTextAsync(_text, qrCodeOptions);
+                }
+                else
+                {
+                    await UpdateTextAsync(_text);
+                }
             }
         }
 

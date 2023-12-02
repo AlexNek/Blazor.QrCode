@@ -1,6 +1,10 @@
 ﻿@page "/"
 @using System.ComponentModel.DataAnnotations
-
+<style>
+    th, td {
+        padding: 15px;
+    }
+</style>
 
 <PageTitle>QRCode Example</PageTitle>
 
@@ -63,8 +67,18 @@
 </EditForm>
 <br>
 <br>
-
-<QrCode CanvasId="code1" Text="@_text" Options="_options" />
+<table >
+    <tr>
+        <td >
+            <div>Version with options</div>
+            <QrCode CanvasId="code1" Text="@_text" Options="_options" />
+        </td>
+        <td>
+            <div>Version with size only</div>
+            <QrCode CanvasId="code2" Text="@_text" Size="@_size" />
+        </td>
+    </tr>
+</table>
 
 @code
 {
@@ -100,6 +114,8 @@
 
     private string _text = QrCodeModel.DefaultText;
 
+    private int? _size;
+
     private QrCodeOptions? _options;
 
     private async Task FormValidSubmit()
@@ -107,6 +123,7 @@
         await Task.CompletedTask;
         _text = _model.Text;
         var options = new QrCodeOptions();
+        _size = _model.Size;
         options.Size = _model.Size;
         options.ErrorCorrectionLevel = _model.ErrorCorrectionLevel;
         options.ColorDark = RadzenColorConverter.Parse(_model.ColorDark);
