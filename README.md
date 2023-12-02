@@ -22,15 +22,15 @@ Another alternative would be to use Visual Studio code. Click [here](https://doc
 
  Using Package Manager
 ```
-Install-Package Blazor.QrCode
+Install-Package Blazor.QrCodeGen
 ```
 
  Using .NET CLI
 ```
-dotnet add package Blazor.QrCode
+dotnet add package Blazor.QrCodeGen
 ```
 
- Using MS VS Manage NuGet Packages search for `Blazor.QrCode`
+ Using MS VS Manage NuGet Packages search for `Blazor.QrCodeGen`
 
  - Add dependencies
 
