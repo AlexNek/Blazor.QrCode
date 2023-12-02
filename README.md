@@ -1,31 +1,56 @@
 # Blazor.QrCode
 > **Note** Not finished yet.  
 TODO:
- - [ ] use version number into github yml
+ - [x] use version number into github yml
  - [ ] publish nuget package from pipeline
- - [ ] update documentation
+ - [x] update documentation
 
 ## Introduction
 
-I have used [QRCode.js](https://github.com/davidshimjs/qrcodejs) as a base for the blazor QR code component. We support version .NET 8.0+
-In your Blazor WASM application, you can use the Blazor component to generate QR codes without Java script.
+I have used [QRCode.js](https://github.com/davidshimjs/qrcodejs) as a base for the blazor QR code component. 
+In your Blazor WASM application, you can use the Blazor component to generate QR codes without Java script. We support version .NET 8.0+  
 Try [demo application ](https://blazorqrcodedemo.azurewebsites.net/)
 
 ![image](pics/main-page.png)
+## Prerequisites
+
+To create Blazor Apps, install the latest version of Visual Studio with the ASP.NET and web development workload.
+For using .Net 8.0 you need at least Visual Studio 2022 17.8+.
+Another alternative would be to use Visual Studio code. Click [here](https://docs.microsoft.com/en-us/aspnet/core/blazor/get-started?view=aspnetcore-3.1&tabs=visual-studio-code) for more information.
+
 
 ## Getting Started
 
-You need to add 2 lines into index.html
+### Installation
+
+ - Install the latest NuGet Package
+
+ Using Package Manager
+```
+Install-Package Blazor.QrCode
+```
+
+ Using .NET CLI
+```
+dotnet add package Blazor.QrCode
+```
+
+ Using MS VS Manage NuGet Packages search for `Blazor.QrCode`
+
+ - Add dependency
+
+ You need to add 2 lines into index.html
 ```html
     <script src="./_content/Blazor.QrCode/qrcode.min.js"></script>
     <script type="module" src="./_content/Blazor.QrCode/qrcodeInterop.js"></script>
 ```
 
+### Usage
+
 Simple use with default settings:
 ```csharp
 <QrCode CanvasId="AnyId" Text="Any text"/>
 ```
-
 
 Usage with customized settings:
 ```csharp
@@ -35,11 +60,13 @@ Usage with customized settings:
 }
 ```
 
-
-
 ## Features
 
-A detailed description of each feature in the project. This can be broken down into sections based on the feature's functionality. Each section should explain what the feature does and how to use it.
+Blazor component for QR code generation. You can change:
+ - Text
+ - Size
+ - Colors
+ - Error correction level
 
 ## Releases
 
