@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Blazor.QrCode.Tests/Blazor.QrCode.Tests.csproj" />
+  <Project Path="Blazor.QrCode/Blazor.QrCodeGen.csproj" />
+  <Project Path="BlazorQrCode.App/BlazorQrCode.AppWasm.csproj" />
+  <Project Path="BlazorQrCode.AppWasm.Test/BlazorQrCode.AppWasm.Test.csproj" />
+</Solution>
