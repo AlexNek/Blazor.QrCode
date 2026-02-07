@@ -27,7 +27,7 @@ public class QrCodeInstance : JsInteropObject
 
     public static async Task<QrCodeInstance> CreateAsync(IJSObjectReference jsModuleRef, string canvasId, string text, QrCodeOptions? qrCodeOptions)
     {
-        IJSObjectReference? jsQrCode;
+        IJSObjectReference jsQrCode;
         if (qrCodeOptions is null)
         {
             jsQrCode = await jsModuleRef.InvokeAsync<IJSObjectReference>("createQrCode", canvasId, text);
@@ -45,6 +45,11 @@ public class QrCodeInstance : JsInteropObject
                            colorDark,
                            colorLight,
                            (int)qrCodeOptions.ErrorCorrectionLevel);
+        }
+
+        if (jsQrCode is null)
+        {
+            throw new InvalidOperationException($"Failed to create QR code: Canvas element with id '{canvasId}' was not found.");
         }
 
         return new QrCodeInstance(jsQrCode, jsModuleRef);

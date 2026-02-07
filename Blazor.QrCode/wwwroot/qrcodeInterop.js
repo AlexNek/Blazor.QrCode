@@ -5,25 +5,37 @@
     }
 }
 
-export function createQrCode(canvasId, text, width, height, colorDark, colorLight, correctLevel) {
-    //for (let i = 0; i < arguments.length; i++) {
-    //    console.log(arguments[i]);
-    //}
-    var qrcodeElement = document.getElementById(canvasId);
+export function createQrCode(
+    canvasId,
+    text,
+    width,
+    height,
+    colorDark,
+    colorLight,
+    correctLevel
+) {
+    const qrcodeElement = document.getElementById(canvasId);
 
-    //clear possible previous context
+    if (!qrcodeElement) {
+        console.warn(`[createQrCode] Element with id '${canvasId}' was not found.`);
+        return null;
+    }
+
+    // Clear any previous QR code
     qrcodeElement.innerHTML = "";
 
+    // If no configuration is provided, fall back to simple usage
     if (correctLevel == null) {
         return new QRCode(qrcodeElement, text);
     }
+
     return new QRCode(qrcodeElement, {
-        text: text,
-        width: width,
-        height: height,
-        colorDark: colorDark,
-        colorLight: colorLight,
-        correctLevel: correctLevel
+        text,
+        width,
+        height,
+        colorDark,
+        colorLight,
+        correctLevel
     });
 }
 
