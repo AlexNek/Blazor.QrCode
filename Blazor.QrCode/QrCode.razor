@@ -1,19 +1,12 @@
 ﻿@using Microsoft.JSInterop
 
-<div id=@CanvasId ></div>
-
-@code
+@if (!string.IsNullOrEmpty(ErrorMessage))
 {
-    /// <summary>
-    /// Gets or sets the canvas identifier.
-    /// </summary>
-    /// <value>The canvas identifier.</value>
-    [Parameter]
-    public string CanvasId { get; set; } = "qrcode";
-
-    [Parameter]
-    public int? Size { get; set; } = null;
-
-    [Parameter]
-    public QrCodeOptions? Options { get; set; }
+    <div style="padding: 10px; margin: 10px 0; background-color: #ffebee; border: 1px solid #ef5350; border-radius: 4px; color: #c62828;">
+        <strong>⚠️ QR Code Error:</strong> @ErrorMessage
+    </div>
+}
+else
+{
+    <div id=@CanvasId></div>
 }
