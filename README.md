@@ -81,7 +81,7 @@ Blazor component for QR code generation. You can change:
  - Error correction level
 
 ## Releases
-1.2.0 - Update to .NET 10.0
+1.2.0 - Update to .NET 10.0  
 1.1.2 - Update to .NET 9.0  
 1.1.1 - Added property Size   
 1.0.0 - Initial .Net8.0 release  
